@@ -31,25 +31,26 @@ let timeBlock = $(`[data-hour= ${i}]`).children().eq(1);
         timeBlock.addClass('present');
     }
     //setting text content to equal allInfo array
-    if (allInfo[`${i-9}`].hour == i)
-        timeBlock.text(allInfo.info)
+    if (allInfo[`${i-9}`].hour == i){
+        timeBlock.text(allInfo.info);
+    };
 };
 //-----------------------------------------------------------------------------------------------------------
 /* --- Storing textarea data to local storage --- */
 //-----------------------------------------------------------------------------------------------------------
-/*
-function storeText (){
 
-let targetParent = $(this).parent();
-allInfo.forEach(obj){
-    if (targetParent.data('hour') === allInfo.obj.hour);
-    let thisInfo = {
-        hour: targetParent.data('hour'),
-        info: targetParent.children().eq(1).val()
-    }
-};
+function storeText (){
+// figure out which time block was picked
+let targetParent = $(this).parent().data('hour');
+//finding the text info
+let targetText = $(this).parent().children().eq(1).val();
+// saving text info to correct object in allInfo array
+allInfo[(targetParent-9)].info = targetText;
+console.log(allInfo);
+// updating allInfo in localStorage
+
 }
 
 
 /* --- Save Events --- */
-//$('.saveBtn').on('click', storeText);
+$('.saveBtn').on('click', storeText);
