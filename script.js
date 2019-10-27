@@ -46,9 +46,9 @@ let targetParent = $(this).parent().data('hour');
 let targetText = $(this).parent().children().eq(1).val();
 // saving text info to correct object in allInfo array
 allInfo[(targetParent-9)].info = targetText;
-console.log(allInfo);
+allInfoJSON = JSON.stringify(allInfo);
 // updating allInfo in localStorage
-
+localStorage.setItem('allInfo', allInfoJSON);
 }
 
 
